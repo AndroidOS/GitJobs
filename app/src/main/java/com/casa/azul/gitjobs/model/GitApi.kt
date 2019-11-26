@@ -5,6 +5,6 @@ import io.reactivex.Single
 import retrofit2.http.GET
 
 interface GitApi {
-    @GET("positions.json?description=python&location=new+york")
+    @GET("positions.json?description=java&location=sf")
     fun getGitJobs(): Single<List<GitJob>>
 }

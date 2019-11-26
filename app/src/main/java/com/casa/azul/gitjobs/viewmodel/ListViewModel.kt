@@ -39,7 +39,7 @@ class ListViewModel(application: Application): BaseViewModel(application) {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object: DisposableSingleObserver<List<GitJob>>(){
                     override fun onSuccess(jobList: List<GitJob>) {
-                        Log.d(TAG, " ${jobList}")
+                        Log.d(TAG, "List size =  ${jobList.size}")
                         Toast.makeText(getApplication(), "Jobs retrieved from endpoint", Toast.LENGTH_SHORT).show()
 
                     }
