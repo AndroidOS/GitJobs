@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.casa.azul.dogs.model.GitApiService
 import com.casa.azul.gitjobs.model.GitJob
+import com.casa.azul.gitjobs.model.GitJobDatabase
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
@@ -42,6 +43,8 @@ class ListViewModel(application: Application): BaseViewModel(application) {
                         Log.d(TAG, "List size =  ${jobList.size}")
                         Toast.makeText(getApplication(), "Jobs retrieved from endpoint", Toast.LENGTH_SHORT).show()
 
+                        storeGitJobsLocally(jobList)
+
                     }
 
                     override fun onError(e: Throwable) {
@@ -52,6 +55,21 @@ class ListViewModel(application: Application): BaseViewModel(application) {
 
                 })
         )
+    }
+
+    private fun storeGitJobsLocally(list: List<GitJob>) {
+        launch {
+            val dao = GitJobDatabase(getApplication()).gitjobDao()
+            dao.deleteAllGitJobs()
+            val result = dao.insertAll(*list.toTypedArray())
+            var i = 0
+            Log.d(TAG, "Room Database result = $result")
+            while (i < list.size) {
+                list[i].uuid = result[i].toInt()
+                ++i
+            }
+            //dogsRetrieved(list)
+        }
     }
 
     override fun onCleared() {
