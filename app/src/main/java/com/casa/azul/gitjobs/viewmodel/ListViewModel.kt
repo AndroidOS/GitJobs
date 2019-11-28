@@ -42,7 +42,7 @@ class ListViewModel(application: Application): BaseViewModel(application) {
                     override fun onSuccess(jobList: List<GitJob>) {
                         Log.d(TAG, "List size =  ${jobList.size}")
                         Toast.makeText(getApplication(), "Jobs retrieved from endpoint", Toast.LENGTH_SHORT).show()
-
+                        gitJobs.value = jobList
                         storeGitJobsLocally(jobList)
 
                     }
