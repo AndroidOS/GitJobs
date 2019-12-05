@@ -1,11 +1,9 @@
 package com.casa.azul.dogs.viewmodel
 
 import android.app.Application
-import android.content.Context
 import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.casa.azul.dogs.model.GitApiService
 import com.casa.azul.gitjobs.model.GitJob
 import com.casa.azul.gitjobs.model.GitJobDatabase
@@ -24,12 +22,16 @@ class ListViewModel(application: Application): BaseViewModel(application) {
 
     val gitJobs = MutableLiveData<List<GitJob>>()
     val loading = MutableLiveData<Boolean>()
+    val detailJob = MutableLiveData<GitJob>()
 
     fun refresh() {
-
-
             fetchFromRemote()
+    }
 
+    fun getDetailJobInfo(i: Int): GitJob? {
+        detailJob.value = gitJobs.value!![i]
+        Log.d(TAG, "ListViewModel DetailJob = ${detailJob.value}")
+        return detailJob.value
     }
 
     private fun fetchFromRemote(){
@@ -68,7 +70,6 @@ class ListViewModel(application: Application): BaseViewModel(application) {
                 list[i].uuid = result[i].toInt()
                 ++i
             }
-            //dogsRetrieved(list)
         }
     }
 

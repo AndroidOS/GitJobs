@@ -35,8 +35,10 @@ class GitjobsListAdapter(val gitJobList: ArrayList<GitJob>): RecyclerView.Adapte
         holder.view.txt_title.text = gitJobList[position].title
         holder.view.txt_company.text = gitJobList[position].company
 
+        val uuid = position
         holder.view.setOnClickListener {
-            Navigation.findNavController(it).navigate(ListFragmentDirections.actionListFragmentToDetailFragment(0))
+            Navigation.findNavController(it)
+                .navigate(ListFragmentDirections.actionListFragmentToDetailFragment(uuid))
         }
 
     }
