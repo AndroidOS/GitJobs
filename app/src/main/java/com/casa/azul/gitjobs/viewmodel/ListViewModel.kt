@@ -22,7 +22,7 @@ class ListViewModel(application: Application): BaseViewModel(application) {
 
     val gitJobs = MutableLiveData<List<GitJob>>()
     val loading = MutableLiveData<Boolean>()
-    val detailJob = MutableLiveData<GitJob>()
+    private val detailJob = MutableLiveData<GitJob>()
 
     fun refresh() {
             fetchFromRemote()

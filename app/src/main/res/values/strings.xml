@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">GitJobs</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">About</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="dialogue_ok">O.K</string>
+    <string name="dialogue_cancel">Cancel</string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
