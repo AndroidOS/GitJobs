@@ -2,11 +2,11 @@ package com.casa.azul.gitjobs.view
 
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -53,12 +53,22 @@ class DetailFragment : Fragment() {
             isEmail?.let {
 
                 if (it) {
-
-                    Toast.makeText(activity, "Menu selection", Toast.LENGTH_SHORT).show()
+                    sendEmail()
+                    //Toast.makeText(activity, "Menu selection", Toast.LENGTH_SHORT).show()
                 }
             }
         })
     }
+
+    private fun sendEmail() {
+
+        val shareIntent = Intent()
+        shareIntent.action = Intent.ACTION_SEND
+        shareIntent.type = "text/plain"
+        shareIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.")
+        startActivity(Intent.createChooser(shareIntent, "GitJobs"))
+    }
+
 
     override fun onAttach(context: Context) {
         super.onAttach(context)

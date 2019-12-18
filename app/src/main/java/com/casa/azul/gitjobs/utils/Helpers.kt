@@ -1,7 +1,6 @@
 package com.casa.azul.gitjobs.utils
 
 import android.content.Context
-import android.content.SharedPreferences
 import androidx.core.content.edit
 import androidx.preference.PreferenceManager
 
