@@ -22,6 +22,7 @@ class ListViewModel(application: Application): BaseViewModel(application) {
 
     val gitJobs = MutableLiveData<List<GitJob>>()
     val loading = MutableLiveData<Boolean>()
+    val menu_email = MutableLiveData<Boolean>()
     private val detailJob = MutableLiveData<GitJob>()
 
     fun refresh() {

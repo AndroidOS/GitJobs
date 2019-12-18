@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">GitJobs</string>
-    <string name="action_settings">About</string>
+    <string name="action_about">About</string>
+    <string name="action_email">Email Job</string>
 
     <string name="dialogue_ok">O.K</string>
     <string name="dialogue_cancel">Cancel</string>

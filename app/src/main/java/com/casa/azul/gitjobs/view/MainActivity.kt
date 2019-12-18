@@ -11,10 +11,9 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.casa.azul.dogs.viewmodel.ListViewModel
 import com.casa.azul.gitjobs.R
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), Listener {
 
     private lateinit var viewModel: ListViewModel
     private lateinit var navController: NavController
@@ -30,9 +29,9 @@ class MainActivity : AppCompatActivity() {
         viewModel.refresh()
 
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+            viewModel.menu_email.value = true
         }
+        fab.hide()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -46,10 +45,11 @@ class MainActivity : AppCompatActivity() {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
-            R.id.action_settings -> {
+            R.id.action_about -> {
                 showDialog()
                 return true
             }
+
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -74,5 +74,13 @@ class MainActivity : AppCompatActivity() {
             builder.create()
         }
         alertDialog?.show()
+    }
+
+    override fun unHideFAB(b: Boolean) {
+        if (b) {
+            fab.show()
+        } else {
+            fab.hide()
+        }
     }
 }
