@@ -62,10 +62,7 @@ class MainActivity : AppCompatActivity(), Listener {
                     DialogInterface.OnClickListener { dialog, id ->
                         // User clicked OK button
                     })
-                //                setNegativeButton(R.string.dialogue_cancel,
-                //                    DialogInterface.OnClickListener { dialog, id ->
-                //                        // User cancelled the dialog
-                //                    })
+
             }
             // Set other dialog properties
             builder.setMessage("Developed by Manuel Carvalho")
