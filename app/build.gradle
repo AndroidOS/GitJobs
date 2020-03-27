@@ -71,4 +71,7 @@ dependencies {
     implementation "androidx.preference:preference-ktx:$preferenceVersion"
     implementation "com.android.support:design:$supportVersion"
     implementation "androidx.lifecycle:lifecycle-extensions:$lifeCycleExtensionVersion"
+
+    //write pdf library
+    implementation 'com.itextpdf:itextg:5.5.10'
 }
